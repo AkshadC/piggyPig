@@ -8,6 +8,7 @@ import javafx.scene.control.Button
 import javafx.scene.control.Label
 import javafx.scene.control.MenuItem
 import javafx.scene.control.TextField
+import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import javafx.scene.layout.VBox
 import org.morons.piggypig.about.AboutDev
@@ -63,6 +64,7 @@ class piggycontroller : Initializable {
 
     private lateinit var clock:Roller
     override fun initialize(url: URL?, resourceBundle: ResourceBundle?) {
+        pigImageView.image= diceImages[7]
         newGameMenuItem.setOnAction { resetField() }
         quitMenuItem.setOnAction { piggyMainApplication.quitAction() }
         game = game("Player 1","Player 2")
@@ -71,6 +73,7 @@ class piggycontroller : Initializable {
         holdBtn.setOnAction { holdAction() }
         aboutGameMenuItem.setOnAction { Platform.runLater(AboutGame()) }
         aboutUsMenuItem.setOnAction { Platform.runLater(AboutDev()) }
+        dieImageView.image= diceImages[6]
     }
 
     private fun rollAction(){
@@ -116,6 +119,7 @@ class piggycontroller : Initializable {
     }
 
     private fun resetField(){
+        dieImageView.image= diceImages[6]
         player1TurnField.text="0"
         player2TurnField.text="0"
         player1ScoreField.text="0"
@@ -144,7 +148,7 @@ class piggycontroller : Initializable {
 
     }
 
-    fun rollAnimation() {
+    private fun rollAnimation() {
         clock.start()
         disableButtons(true)
     }

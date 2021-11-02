@@ -8,9 +8,12 @@ import javafx.geometry.Insets
 import javafx.geometry.Orientation
 import javafx.scene.Scene
 import javafx.scene.control.*
+import javafx.scene.image.Image
+import javafx.scene.image.ImageView
 import javafx.scene.layout.*
 import javafx.stage.*
 import javafx.util.Duration
+import org.morons.piggypig.piggyMainApplication
 
 import kotlin.math.pow
 
@@ -74,63 +77,60 @@ class AboutGame : Runnable{
             space1.prefWidth = 25.0
             val space = Label()
             space.prefHeight = 50.0
-            space.prefWidth = 15.0
+            space.prefWidth = 80.0
             initStyle(StageStyle.TRANSPARENT) //Set the scene transparent
 
             //Label to store header text  of about app
-            val aboutAppheadertxt = Label("\n\nAbout Piggy Dice Game\n")
+            val aboutAppheadertxt = Label("About the piggy dice app:\n\n\n")
             aboutAppheadertxt.id = "headerLabel"
-
-            //Label header text one of about app
-
-
-
+            aboutAppheadertxt.prefWidth(150.0)
 
             //Label to store content text
-            val aboutAppcontentText =
-                Label("Piggy Dice Game is 2 player dice game\n" +
-                        "The aim of the game is to 'roll' a die \nand 'hold' points to your score\n" +
-                        "but, beware of the number '1' \nas rolling it will set your current score to 0.")
-            aboutAppcontentText.id = "contentLabel"
+            val aboutAppcontext = Label(
+                """Piggy Dice Game is 2 player dice game 
+The aim of the game is to 'roll' a die 
+and 'hold' points to your score
+
+but, beware of the number '1' as rolling 
+it will set your current score to 0.
+"""
+            )
+            aboutAppcontext.id = "contentLabel"
 
             //Creating image view and label for it
-            val aboutAppimageLabel = Label()
-            aboutAppimageLabel.prefHeight = 50.0
-            aboutAppimageLabel.prefWidth = 50.0
-            aboutAppimageLabel.id = "aboutAppimageLabel"
+            val aboutAppImageLabel = Label()
+            aboutAppImageLabel.graphic =  ImageView(Image(piggyMainApplication::class.java.getResourceAsStream("DiceImages/0.png")));
+            aboutAppImageLabel.prefHeight = 50.0
+            aboutAppImageLabel.prefWidth = 50.0
+            aboutAppImageLabel.id = "aboutAppImageLabel"
 
             //Hbox to store header and image label
-            val aboutAppheader_Image = HBox(5.0,  space, aboutAppimageLabel)
+            val aboutAppheader_Image = HBox(5.0, aboutAppheadertxt, space, aboutAppImageLabel)
 
             //Vbox to store the labels
-            val aboutAppbox = VBox(
-                aboutAppheadertxt,
-                aboutAppheader_Image,
-                space1,
-                Separator(Orientation.HORIZONTAL),
-                aboutAppcontentText
-            )
+            val aboutAppVBox =
+                VBox(11.0, aboutAppheader_Image,  Separator(Orientation.HORIZONTAL), aboutAppcontext)
 
             //Css for the Vbox
-            aboutAppbox.id = "dialogueVbox"
-            aboutAppbox.padding = Insets(10.0, 0.0, 0.0, 15.0)
-            aboutAppbox.prefHeight =275.0
-            aboutAppbox.prefWidth = 350.0
+            aboutAppVBox.id = "dialogueVbox"
+            aboutAppVBox.padding = Insets(10.0, 0.0, 0.0, 15.0)
+            aboutAppVBox.prefHeight = 270.0
+            aboutAppVBox.prefWidth = 350.0
+
 
             // Button to close the dialogue and its Css
-            val aboutAppbtn = Button("OK")
-            aboutAppbtn.prefHeight = 26.0
-            aboutAppbtn.prefWidth=55.0
-            aboutAppbtn.id = "dialogueOkbutton"
-            aboutAppbtn.translateX = 285.0
-            aboutAppbtn.translateY = 245.0
-            aboutAppbtn.setOnAction { closeDialog() }
-            aboutApproot.children.addAll(aboutAppbox, aboutAppbtn) //Adding all the nodes to the root pane
-            val scene = Scene(aboutApproot, aboutAppbox.prefWidth,aboutAppbox.prefHeight) //Creating a scene
-
-            //scene.stylesheets.add(
-              //  Objects.requireNonNull<URL>(aboutapp::class.java.getResource("Calculator.css")).toExternalForm()
-            //) //Importing the stylesheet
+            val aboutappokbtn = Button("OK")
+            aboutappokbtn.prefHeight = 26.0
+            aboutappokbtn.prefWidth = 55.0
+            aboutappokbtn.id = "dialogueOkbutton"
+            aboutappokbtn.translateX = 285.0
+            aboutappokbtn.translateY = 233.0
+            aboutappokbtn.setOnAction { closeDialog() }
+            aboutApproot.children.addAll(aboutAppVBox, aboutappokbtn) //Adding all the nodes to the root pane
+            val scene = Scene(aboutApproot, aboutAppVBox.prefWidth, aboutAppVBox.prefHeight) //Creating a scene
+            /*scene.stylesheets.add(
+                Objects.requireNonNull<URL>(aboutus::class.java.getResource("Calculator.css")).toExternalForm()
+            ) //Importing the stylesheet*/
             setScene(scene)
         }
     }

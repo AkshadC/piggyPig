@@ -4,6 +4,7 @@ import javafx.scene.image.Image
 
     val diceImages:List<Image> =
         listOf(
+
             Image(
                 piggyMainApplication::class.java.getResourceAsStream("DiceImages/1.png")
             ),
@@ -21,5 +22,11 @@ import javafx.scene.image.Image
             ),
             Image(
                 piggyMainApplication::class.java.getResourceAsStream("DiceImages/6.png")
+            ),
+            Image(
+                piggyMainApplication::class.java.getResourceAsStream("DiceImages/0.png")
+            ),
+            Image(
+                piggyMainApplication::class.java.getResourceAsStream("DiceImages/title.png")
             )
         )
