@@ -1,0 +1,27 @@
+.menu-bar{
+    -fx-background-color:
+            linear-gradient(to bottom, #e0e0e0, #dcdcdc, #d7d7d7, #d3d3d3, #cfcfcf, #cdcdcd, #cbcbcb, #c9c9c9, #c8c8c9, #c8c8c8, #c7c7c8, #c7c6c7);
+}
+
+.menu-bar .menu-button:hover, .menu-bar .menu-button:showing, .menu-bar .menu-button:selected {
+    -fx-background-color: #7793f5,
+    linear-gradient(to top,  #7793f5 0%, #406df2 50%, #275af1 100%);
+}
+
+.context-menu {
+    -fx-background-color: #F5F5F5 ;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 0 6 6 6, 0 5 5 5, 0 4 4 4;
+    -fx-padding: 0.333333em 0.083333em 0.666667em 0.083333em;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
+}
+
+#fileMenu .label:hover ,#fileMenu .label:focused{
+    -fx-text-fill: white;
+}
+
+.menu-item:focused {
+    -fx-background-color: #7793f5,
+    linear-gradient(to top,  #7793f5 0%, #406df2 50%, #275af1 100%);
+    -fx-background-radius: 6 6 6 6, 5 5 5 5, 4 4 4 4;
+}
