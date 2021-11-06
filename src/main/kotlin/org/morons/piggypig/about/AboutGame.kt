@@ -14,6 +14,8 @@ import javafx.scene.layout.*
 import javafx.stage.*
 import javafx.util.Duration
 import org.morons.piggypig.piggyMainApplication
+import java.net.URL
+import java.util.*
 
 import kotlin.math.pow
 
@@ -128,9 +130,9 @@ it will set your current score to 0.
             aboutappokbtn.setOnAction { closeDialog() }
             aboutApproot.children.addAll(aboutAppVBox, aboutappokbtn) //Adding all the nodes to the root pane
             val scene = Scene(aboutApproot, aboutAppVBox.prefWidth, aboutAppVBox.prefHeight) //Creating a scene
-            /*scene.stylesheets.add(
-                Objects.requireNonNull<URL>(aboutus::class.java.getResource("Calculator.css")).toExternalForm()
-            ) //Importing the stylesheet*/
+            scene.stylesheets.add(
+                Objects.requireNonNull<URL>(piggyMainApplication::class.java.getResource("PiggyAboutStyle.css")).toExternalForm()
+            )
             setScene(scene)
         }
     }

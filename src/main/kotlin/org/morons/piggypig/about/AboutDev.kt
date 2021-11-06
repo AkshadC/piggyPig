@@ -11,6 +11,8 @@ import javafx.scene.layout.*
 import javafx.stage.*
 import javafx.util.Duration
 import org.morons.piggypig.piggyMainApplication
+import java.net.URL
+import java.util.*
 import kotlin.math.pow
 
 const val DEV_NAME="Akshad C"
@@ -117,14 +119,10 @@ just for fun
             aboutUsOkbtn.setOnAction { closeDialog() }
             aboutUsroot.children.addAll(aboutUsVbox, aboutUsOkbtn) //Adding all the nodes to the root pane
             val scene = Scene(aboutUsroot, aboutUsVbox.prefWidth, aboutUsVbox.prefHeight) //Creating a scene
-            /*scene.stylesheets.add(
-                Objects.requireNonNull<URL>(aboutus::class.java.getResource("Calculator.css")).toExternalForm()
-            ) //Importing the stylesheet*/
+            scene.stylesheets.add(
+                Objects.requireNonNull<URL>(piggyMainApplication::class.java.getResource("PiggyAboutStyle.css")).toExternalForm()
+            )
             setScene(scene)
         }
     }
-
-
-
-
 }
